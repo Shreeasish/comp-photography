@@ -1,11 +1,11 @@
-input_texture = imread('./samples/text_small.jpg');
-patchsize = 80;
-OUTPUTSIZE = 400;
-num_patches = 400/80;
+input_texture = imread('./samples/fabric-small.jpg');
+patchsize = 65;
+OUTPUTSIZE = 261;
+num_patches = 4;
+
 [s_y, s_x, s_z] = size(input_texture);
 synth = zeros(OUTPUTSIZE,OUTPUTSIZE,3);
 
-%%
 for i=1:num_patches
     for j=1:num_patches
         rx = randi([1 s_x-patchsize],1,1);
@@ -29,8 +29,8 @@ for i=1:num_patches
         
     end
 end
-%%
 
-
+imshow(uint8(synth));
+imwrite(uint8(synth),'./results/fabric-basic.jpg');
 
 
